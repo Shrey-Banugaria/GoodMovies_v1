@@ -16,8 +16,11 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        required: true,
+        // required: true,
         minlength: 6 // Enforce minimum password length
+    },
+    about: {
+        type: String
     },
     createdAt: {
         type: Date,
@@ -26,7 +29,8 @@ const userSchema = new Schema({
     role: {
         type: String,
         required: true,
-        enum: ['User', 'Director', 'Actor', 'Artist']
+        enum: ['User', 'Director', 'Actor', 'Artist'],
+        default: 'User'
     },
     likedMovies: [
         { type: Schema.Types.ObjectId, ref: 'Movies' },
@@ -53,4 +57,4 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = new User();
+module.exports = User;

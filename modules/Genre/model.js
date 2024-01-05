@@ -9,4 +9,4 @@ const Genre = new Schema({
 
 const Generes = mongoose.model('Genre', Genre);
 
-module.exports = new Generes();
+module.exports = Generes

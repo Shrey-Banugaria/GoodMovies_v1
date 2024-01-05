@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const Movie = new Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    genre: { type: Schema.Types.ObjectId, ref: 'Genre', required: true },
+    genre: [{ type: Schema.Types.ObjectId, ref: 'Genre', required: true }],
     image: { type: String, required: true },
     releaseDate: {  
         type: Date,
@@ -17,4 +17,4 @@ const Movie = new Schema({
 
 const Movies = mongoose.model('Movie', Movie);
 
-module.exports = new Movies();
+module.exports = Movies

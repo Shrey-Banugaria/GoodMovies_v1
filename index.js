@@ -10,10 +10,10 @@ const PORT = process.env.PORT || 3000
 dbConnection.mongooseDb()
 const app = server()
 
-const typeDefs = require('./schema');
-const resolvers = require('./resolvers');
+const typeDefs = require('./graphql/schema');
+const resolvers = require('./graphql/resolvers');
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
-    
+
 const startServer = async () => {
     app.use(cors())
     app.use(bodyParser.json())

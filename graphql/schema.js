@@ -4,8 +4,9 @@ const typeDefs = gql`
   type User{
       name: String!
       email: String!
-      password: String!
+      password: String
       createdAt: String!
+      about: String
       id: ID!
       role: String! # Roles are -> User, Director, Actor, Artist
       likedMovies: [Movies]
@@ -73,7 +74,18 @@ const typeDefs = gql`
 
     ytVideos: [YTVideo]
     ytVideo(id: ID): YTVideo
+  }
 
-  }`
+  type Mutation {
+    addUser(name: String!, email: String!, password: String, role: String, about: String ): User
+    addGenre(name: String!, description: String!, metadata: String! ): Genre
+    addMovie(title: String!, description: String, genre: [ID!], image: String, releaseDate: String): Movies,
+    addSeries(title: String!, description: String, genre: [ID!], image: String, releaseDate: String): Series,
+    addVideos(title: String!, description: String, genre: [ID!], image: String, releaseDate: String): YTVideo,
+
+    likeMovie(movieId: ID, userId: ID): Movies
+    likeVideo(movieId: ID, userId: ID): YTVideo
+  }
+  `
 
 module.exports = typeDefs;
